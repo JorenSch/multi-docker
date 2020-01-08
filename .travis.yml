@@ -1,5 +1,5 @@
-language: generic
 sudo: required
+
 services:
     - docker
 
@@ -15,11 +15,11 @@ after_success:
     - docker build -t jorens/multi-server ./server
     - docker build -t jorens/multi-worker ./worker
 
-#log in to docker cli
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 #take images and push them to docker hub
-- docker push jorens/multi-client
-- docker push jorens/multi-nginx
-- docker push jorens/multi-server
-- docker push jorens/multi-worker
+    - docker push jorens/multi-client
+    - docker push jorens/multi-nginx
+    - docker push jorens/multi-server
+    - docker push jorens/multi-worker
